@@ -1,3 +1,5 @@
+package ont2ten;
+
 import java.util.*;
 
 /**
@@ -30,7 +32,7 @@ public class One {
     private static Integer[] getRepeatNumWithSort(Integer[] arr) {
         int temp;
         for (int i = 0; i < arr.length - 1; i++) {
-            for (int j = 0; j < arr.length - i -  1; j++) {
+            for (int j = 0; j < arr.length - i - 1; j++) {
                 if (arr[j] > arr[j + 1]) {
                     temp = arr[j];
                     arr[j] = arr[j + 1];
@@ -44,19 +46,32 @@ public class One {
         while (i < arr.length - 1) {
             if (arr[i].equals(arr[i + 1])) {
                 linkedList.add(arr[i]);
-                while (i < arr.length - 1 & arr[i].equals(arr[++i])){
+                while (i < arr.length - 1 & arr[i].equals(arr[++i])) {
 
                 }
                 continue;
             }
-            i ++;
+            i++;
         }
 
         return linkedList.toArray(new Integer[0]);
     }
 
+    private static Integer[] answerOnBook(Integer[] arr) {
+        HashSet<Integer> result = new HashSet<>();
+        Integer[] temp = new Integer[arr.length];
+        for (int i = 0; i < arr.length; i++) {
+            int num = arr[i];
+            if (num != i && temp[num] != null) {
+                result.add(num);
+            }
+            temp[num] = num;
+        }
+        return result.toArray(new Integer[0]);
+    }
+
     public static void main(String[] args) {
-        Integer[] param = new Integer[]{2,3,1,0,2,5,3,3};
-        System.out.println(Arrays.toString(getRepeatNumWithSort(param)));
+        Integer[] param = new Integer[]{2, 3, 1, 0, 2, 5, 3, 5};
+        System.out.println(Arrays.toString(answerOnBook(param)));
     }
 }

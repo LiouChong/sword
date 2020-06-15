@@ -1,3 +1,5 @@
+package ont2ten;
+
 import java.util.Arrays;
 import java.util.Objects;
 
